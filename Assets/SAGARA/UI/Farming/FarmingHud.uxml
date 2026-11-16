@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="FarmingHud.uss" />
+    <ui:VisualElement class="farming-hud-root" picking-mode="Ignore">
+        <ui:VisualElement class="farming-card" picking-mode="Ignore">
+            <ui:Label name="CropName" class="crop-name" text="Wortel" picking-mode="Ignore" />
+            <ui:Label name="Stock" class="stock" text="Benih 20 · Panen 0" picking-mode="Ignore" />
+            <ui:Label name="TrashStock" class="stock" text="Sampah terkumpul 0" picking-mode="Ignore" />
+            <ui:Label name="Prompt" class="prompt" text="Dekati dan hadapkan karakter ke petak." picking-mode="Ignore" />
+            <ui:Label name="Feedback" class="feedback" picking-mode="Ignore" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

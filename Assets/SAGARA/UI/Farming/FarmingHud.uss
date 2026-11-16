@@ -1,0 +1,52 @@
+.farming-hud-root {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -unity-font-definition: url("FarmingFont.asset");
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 24px;
+}
+.farming-card {
+    width: 370px;
+    max-width: 100%;
+    padding: 16px 20px;
+    background-color: rgba(39, 47, 30, 0.94);
+    border-left-width: 3px;
+    border-left-color: rgb(232, 185, 85);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: rgb(255, 247, 224);
+    font-size: 16px;
+}
+.crop-name {
+    font-size: 20px;
+    -unity-font-style: bold;
+    margin-bottom: 5px;
+}
+.stock {
+    color: rgb(216, 224, 195);
+    margin-bottom: 12px;
+}
+.prompt {
+    color: rgb(255, 214, 126);
+    white-space: normal;
+}
+.feedback {
+    color: rgb(216, 224, 195);
+    font-size: 14px;
+    white-space: normal;
+    margin-top: 8px;
+}
+
+.farming-document {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
