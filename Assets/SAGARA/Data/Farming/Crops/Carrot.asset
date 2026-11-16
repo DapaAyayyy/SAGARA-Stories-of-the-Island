@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb01ea04ffbd263478dd0b65421c465e, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: Assembly-CSharp::CropDefinition
+  displayName: Wortel
+  stagePrefabs:
+  - {fileID: 2378924202155890680, guid: d7e2bab40bf1b0448af52497b8524cab, type: 3}
+  - {fileID: 3069236146036560521, guid: 5973c1ec714c2f54faee7821de6e69a8, type: 3}
+  - {fileID: 3384013327737026077, guid: 64e04cf90bca3cf4eb5d34eb1775b30d, type: 3}
+  secondsPerStage: 15
+  visualScale: 1.6
+  harvestYield: 1
