@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950727455b717074dbd3d6089e3d7462, type: 3}
+  m_Name: CoastalFishingTheme
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingUiTheme
+  parchment: {fileID: 2800000, guid: b826987e6a90a0c43ab01c3637ded53a, type: 3}
+  arrow: {fileID: 2800000, guid: d4ba8365e3525844884f80859708bd52, type: 3}
+  hook: {fileID: 2800000, guid: de0c62b5fdb97eb41864d1a77227cbab, type: 3}
+  illustratedPanel: {fileID: 2800000, guid: 051d606afe6faf64185a40be508e802d, type: 3}
+  resultPanel: {fileID: 2800000, guid: e756a80e67b9f3348b11caf67cca72bf, type: 3}
+  keycap: {fileID: 2800000, guid: 0e6215149ea6f344b80b54090e659a7d, type: 3}
+  ink: {r: 0.22, g: 0.25, b: 0.2, a: 1}
+  muted: {r: 0.43, g: 0.46, b: 0.37, a: 1}
+  teal: {r: 0.15, g: 0.43, b: 0.4, a: 1}
+  wood: {r: 0.39, g: 0.27, b: 0.17, a: 1}
+  coral: {r: 0.73, g: 0.36, b: 0.29, a: 1}
+  ivory: {r: 1, g: 0.97, b: 0.87, a: 1}

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9d5b4241ecc874fbc96c40d462806c, type: 3}
+  m_Name: FishingVisualCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingVisualCatalog
+  entries:
+  - rarity: 0
+    temporaryFishId: prototype_fish_common
+    prefab: {fileID: 2350393509496851162, guid: f208407388391cd419d5fa238c33d403, type: 3}
+    displayName: Clownfish
+    portrait: {fileID: 2800000, guid: f92b784ffb212e342ad19b901a7196ac, type: 3}
+  - rarity: 1
+    temporaryFishId: prototype_fish_uncommon
+    prefab: {fileID: 1037449490975160620, guid: 3944f6effcc1f454b807f9324a341be2, type: 3}
+    displayName: RedSnapper
+    portrait: {fileID: 2800000, guid: 39d4c788dbfdd4944af5f6fb7514dad6, type: 3}
+  - rarity: 2
+    temporaryFishId: prototype_fish_rare
+    prefab: {fileID: 4364043894094920777, guid: a924c62eb7a696b4ab6402b71940fa59, type: 3}
+    displayName: CoralGrouper
+    portrait: {fileID: 2800000, guid: 32316ba4978b36b43a9f18401f1708c7, type: 3}
+  - rarity: 3
+    temporaryFishId: prototype_fish_epic
+    prefab: {fileID: 7592696395812623289, guid: 4baecaee35735784b844755e3f0c2bcc, type: 3}
+    displayName: RoyalGramma
+    portrait: {fileID: 2800000, guid: fdcfb091a3d17c24db7dc0c5e8658416, type: 3}
+  - rarity: 4
+    temporaryFishId: prototype_fish_legendary
+    prefab: {fileID: 6312631615599977002, guid: bcccdbe981a8c6646a46b6eb8dc17405, type: 3}
+    displayName: Lionfish
+    portrait: {fileID: 2800000, guid: 772c332cd4aaf204485eae8fefccad29, type: 3}

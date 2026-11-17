@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4769842266042932662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5024778149368954868}
+  - component: {fileID: 8154059569930728900}
+  - component: {fileID: 1617441478807235345}
+  - component: {fileID: 3212762650738745496}
+  - component: {fileID: 3402632306718496561}
+  - component: {fileID: 8956800551986291151}
+  - component: {fileID: 4570345710192511816}
+  m_Layer: 0
+  m_Name: DermagaFishingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5024778149368954868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8154059569930728900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ca02bab88f5ca4ab14a047ad3f76fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingSession
+  configuration: {fileID: 11400000, guid: 0834ed443f9a05943bf501942ef89813, type: 2}
+  movement: {fileID: 0}
+  player: {fileID: 0}
+  animator: {fileID: 0}
+  fishingController: {fileID: 9100000, guid: 2ba7e21d0ccf14540be74a0e459780a6, type: 2}
+  spots: []
+  conflictingInteractions: []
+  presentation: {fileID: 1617441478807235345}
+--- !u!114 &1617441478807235345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11558b9d0a4c6bd43b43d9dd42b290e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingPresentation
+  hand: {fileID: 0}
+  rodPrefab: {fileID: 4756544189886375182, guid: 2308ee20596e03948a857f48c8efa490, type: 3}
+  rodMaterial: {fileID: 2100000, guid: 685e0a787457d8a46939c8eb2f1dd3d2, type: 2}
+  lineMaterial: {fileID: 2100000, guid: 8dca02fc942720d479d68ebbee4d927a, type: 2}
+  waterMaterial: {fileID: 2100000, guid: f54b759149789d04088d4d0fce8e974b, type: 2}
+  bobberMaterial: {fileID: 2100000, guid: bad0bc6615e9b7b4b87c65e32c29c026, type: 2}
+  auraTemplate: {fileID: 2100000, guid: 0e6787c241524ae4f83119ba4a6ecb26, type: 2}
+  audioSource: {fileID: 0}
+--- !u!114 &3212762650738745496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cdc06827af9c84db98ec856235311b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingHud
+  session: {fileID: 8154059569930728900}
+  theme: {fileID: 11400000, guid: 34032295d0c58784abc0bddd7c87350c, type: 2}
+  landing: {fileID: 8956800551986291151}
+  catchCard: {fileID: 4570345710192511816}
+--- !u!114 &3402632306718496561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d0eb85e1023f44d9a725f6e95b8fe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.SessionFishVisuals
+  session: {fileID: 8154059569930728900}
+  catalog: {fileID: 11400000, guid: 18e02e5d8754bda458cdd1fb4d542d28, type: 2}
+  waterHeight: -0.9
+  showDebugMarkers: 0
+  debugMarkers: []
+--- !u!114 &8956800551986291151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1f7aa1a596d12498fb5d0cfc6e71f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishLandingPresentation
+  session: {fileID: 8154059569930728900}
+  visuals: {fileID: 3402632306718496561}
+  flightSeconds: 1.15
+  flopSeconds: 1.55
+  arcHeight: 2.3
+--- !u!114 &4570345710192511816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769842266042932662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1278c58e530f14c49a7ea1a6d658e850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingCatchCard
+  theme: {fileID: 11400000, guid: 34032295d0c58784abc0bddd7c87350c, type: 2}
+  landing: {fileID: 8956800551986291151}
+  visuals: {fileID: 3402632306718496561}
+  session: {fileID: 8154059569930728900}
