@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9435b3c7b61a4ce469dce5fb278865ad, type: 3}
+  m_Name: DimensionalFishingTheme
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.DimensionalFishingTheme
+  frame: {fileID: 21300000, guid: 92ce84e65f183c4468a3efb05f3c1910, type: 3}
+  header: {fileID: 21300000, guid: c3758d5230a34f04098232a5f5e071e2, type: 3}
+  badgeRim: {fileID: 21300000, guid: dc795f8709bfded4f82c1574e2e72ee2, type: 3}
+  button: {fileID: 21300000, guid: 9aa058cba57069249b2bd55e2834ad3b, type: 3}
+  keycap: {fileID: 21300000, guid: 27b6f8b06acadfe48b591dee53fdb776, type: 3}
+  activeKeycap: {fileID: 21300000, guid: 292a0b9987b6f8e4c8401af8ab9b29a1, type: 3}
+  crown: {fileID: 21300000, guid: c870f528ac88b9840a2e75994a3871ff, type: 3}
+  flower: {fileID: 21300000, guid: a9f867bfe526be24b8111703b64cff8a, type: 3}
+  wave: {fileID: 21300000, guid: d71d52634b630c74aab525d326ba1d4a, type: 3}
+  wheel: {fileID: 21300000, guid: aaa033bf0b370f44a944fe06f12bbcf7, type: 3}
+  ink: {r: 0.3, g: 0.16, b: 0.08, a: 1}
+  cream: {r: 1, g: 0.94, b: 0.79, a: 1}
+  teal: {r: 0.02, g: 0.52, b: 0.49, a: 1}
+  headerDelay: 0.045
+  detailDelay: 0.08
+  settleSeconds: 0.22
+  pressDepth: 6
+  scoreSpeed: 48
