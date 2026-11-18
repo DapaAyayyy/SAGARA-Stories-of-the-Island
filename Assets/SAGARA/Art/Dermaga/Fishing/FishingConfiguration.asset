@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d419c213985b74ca9d3689a630fb8a, type: 3}
+  m_Name: FishingConfiguration
+  m_EditorClassIdentifier: Assembly-CSharp::Sagara.Dermaga.Fishing.FishingConfiguration
+  rarities:
+  - rarity: 0
+    fishId: prototype_fish_common
+    weight: 40
+    minimumScore: 50
+    aura: {r: 1, g: 1, b: 1, a: 1}
+    intensity: 1
+  - rarity: 1
+    fishId: prototype_fish_uncommon
+    weight: 30
+    minimumScore: 60
+    aura: {r: 0.3, g: 0.85, b: 0.4, a: 1}
+    intensity: 1.3
+  - rarity: 2
+    fishId: prototype_fish_rare
+    weight: 15
+    minimumScore: 70
+    aura: {r: 0.2, g: 0.55, b: 1, a: 1}
+    intensity: 1.6
+  - rarity: 3
+    fishId: prototype_fish_epic
+    weight: 10
+    minimumScore: 80
+    aura: {r: 0.7, g: 0.35, b: 1, a: 1}
+    intensity: 1.9000001
+  - rarity: 4
+    fishId: prototype_fish_legendary
+    weight: 5
+    minimumScore: 90
+    aura: {r: 1, g: 0.75, b: 0.15, a: 1}
+    intensity: 2.2
+  castSeconds: 1
+  biteWaitSeconds: {x: 2, y: 4}
+  biteNoticeSeconds: 0.8
+  arrowSeconds: 1.8
+  inputInterval: 0.12
+  resultSeconds: 2.5
+  deterministicSeed: 0
+  seed: 808
