@@ -16,10 +16,10 @@ public sealed class InfoBoard : MonoBehaviour
     [SerializeField] private string title = "Papan Informasi Desa Lembayung";
     [SerializeField, TextArea(2, 4)] private string[] entries =
     {
-        "Selamat datang di Pulau Lembayung! Balai Desa buka setiap hari untuk membantu warga.",
+        "Selamat datang di Desa Lembayung! Kepala Desa, Bu Ratna, menunggu warga di Balai Desa.",
+        "Gotong royong: sejak badai, sampah berserakan di alun-alun. Bantu pungut sampahnya, ya!",
+        "Dermaga rusak sejak badai. Warga yang ingin membantu, temui Pak Darma di dermaga lewat jalan tenggara.",
         "Festival Bahari akan digelar kembali setelah desa dan pesisir pulih. Ayo bantu warga!",
-        "Pesisir kotor: kumpulkan sampah di pantai dan buang ke tempat sampah organik/anorganik.",
-        "Dermaga akan dibuka setelah warga mengumpulkan cukup Community Points.",
     };
     [SerializeField, Min(0.5f)] private float readDistance = 2f;
 
