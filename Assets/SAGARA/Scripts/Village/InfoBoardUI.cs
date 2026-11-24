@@ -26,6 +26,9 @@ public sealed class InfoBoardUI : MonoBehaviour
     private Label titleLabel;
     private VisualElement list;
     private InfoBoard shownBoard;
+    private PlayerTrashInteraction trash;
+    private int lastTrashFrame = -1;
+    private float messageUntil;
 
     private void OnEnable()
     {
@@ -135,6 +138,39 @@ public sealed class InfoBoardUI : MonoBehaviour
         }
     }
 
+    // Prompt "[E] Ambil Sampah" saat dekat sampah, lalu sebentar menampilkan progres quest setelah sampah diambil.
+    private string TrashPromptText()
+    {
+        if (trash == null && player != null)
+        {
+            trash = player.GetComponent<PlayerTrashInteraction>();
+        }
+
+        if (trash == null || !trash.isActiveAndEnabled)
+        {
+            return string.Empty;
+        }
+
+        if (trash.LastActionFrame != lastTrashFrame)
+        {
+            lastTrashFrame = trash.LastActionFrame;
+            messageUntil = Time.unscaledTime + 2.5f;
+        }
+
+        if (trash.Target != null)
+        {
+            return trash.ActionPrompt;
+        }
+
+        if (Time.unscaledTime < messageUntil)
+        {
+            QuestData quest = QuestLog.QuestBerjalan;
+            return quest != null ? trash.LastMessage + "  " + quest.TeksSingkat : trash.LastMessage;
+        }
+
+        return string.Empty;
+    }
+
     private void Refresh()
     {
         if (container == null)
@@ -150,15 +186,15 @@ public sealed class InfoBoardUI : MonoBehaviour
         EnsureAttached();
 
         bool reading = player != null && player.IsReading;
-        bool showPrompt = player != null && !reading && player.Target != null;
+        string promptText = reading || player == null ? string.Empty : player.ActionPrompt;
+        if (promptText.Length == 0 && !reading)
+        {
+            promptText = TrashPromptText();
+        }
 
         panel.style.display = reading ? DisplayStyle.Flex : DisplayStyle.None;
-        promptRow.style.display = showPrompt ? DisplayStyle.Flex : DisplayStyle.None;
-
-        if (showPrompt)
-        {
-            prompt.text = player.ActionPrompt;
-        }
+        promptRow.style.display = promptText.Length > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+        prompt.text = promptText;
 
         // Isi panel hanya dibangun ulang saat papan yang dibuka berganti.
         InfoBoard board = reading ? player.OpenBoard : null;
