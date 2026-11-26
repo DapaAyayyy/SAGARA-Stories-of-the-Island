@@ -1,0 +1,643 @@
+/* ============================================================================
+   SAGARA: Stories of the Island — Cozy 3D Steam-Ready Fishing UI (016_SteamPolish)
+   - Ultra-clean minimal-typography 3D Minigame Deck + Living Water-Tank Gauge
+   - Cinematic Centered 3D Fish Reward Reveal (zero text-wall clutter)
+   - 100% cohesive with DermagaCleanupHud & Jurnal Pesisir (CoralOverlay.uss)
+   ============================================================================ */
+
+.fish-root {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* --- SHARED FLOATING FROSTED STATUS PILL (CASTING / WAITING / REELING) --- */
+.fish-status-wrap {
+    position: absolute;
+    bottom: 26px;
+    align-self: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 9px 34px 9px 30px;
+}
+
+.fish-status-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-status-icon {
+    width: 34px;
+    height: 34px;
+    margin-right: 11px;
+    flex-shrink: 0;
+}
+
+.fish-status-text-col {
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.fish-status-label {
+    font-size: 17px;
+    color: rgb(255, 251, 238);
+    text-shadow: 0px 2px 4px rgba(4, 14, 20, 0.96);
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.fish-status-sub {
+    font-size: 12px;
+    color: rgb(198, 232, 226);
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.92);
+    margin: 1px 0px 0px 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.fish-mini-esc {
+    flex-direction: row;
+    align-items: center;
+    min-height: 34px;
+    padding: 3px 13px 8px 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.40px;
+    transition-property: scale, translate;
+    transition-duration: 0.12s;
+    transition-timing-function: ease-out;
+}
+
+.fish-mini-esc:hover {
+    scale: 1.06 1.06;
+    translate: 0px -2px;
+}
+
+.fish-mini-esc:active,
+.fish-mini-esc.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 2px;
+}
+
+.fish-mini-esc-cap {
+    font-size: 11px;
+    color: rgb(42, 62, 54);
+    background-color: rgba(166, 139, 91, 0.22);
+    border-radius: 5px;
+    padding: 1px 6px;
+    margin: 0px 6px 0px 0px;
+}
+
+.fish-mini-esc-label {
+    font-size: 12px;
+    color: rgb(62, 48, 32);
+    margin: 0px;
+    padding: 0px;
+}
+
+/* --- BITE DETECTED BANNER & WORLD-SPACE BEACON --- */
+.fish-world-bite {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-world-bite-canvas {
+    width: 84px;
+    height: 84px;
+}
+
+.fish-bite-banner {
+    position: absolute;
+    bottom: 34px;
+    align-self: center;
+    min-width: 390px;
+    padding: 15px 54px 13px 54px;
+    align-items: center;
+}
+
+.fish-bite-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-bite-title {
+    font-size: 22px;
+    color: rgb(255, 250, 232);
+    text-shadow: 0px 2px 5px rgba(4, 14, 20, 0.98);
+    margin: 0px 0px 2px 0px;
+    padding: 0px;
+    -unity-text-align: middle-center;
+}
+
+.fish-bite-sub {
+    font-size: 14px;
+    color: rgb(255, 228, 140);
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.96);
+    margin: 0px;
+    padding: 0px;
+    -unity-text-align: middle-center;
+}
+
+/* --- ESCAPE NOTICE (CATCH FAIL) --- */
+.fish-fail-banner {
+    position: absolute;
+    bottom: 34px;
+    align-self: center;
+    min-width: 400px;
+    padding: 14px 52px 13px 52px;
+    align-items: center;
+}
+
+.fish-fail-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-fail-title {
+    font-size: 20px;
+    color: rgb(255, 246, 230);
+    text-shadow: 0px 2px 4px rgba(4, 14, 20, 0.96);
+    margin: 0px 0px 2px 0px;
+    padding: 0px;
+    -unity-text-align: middle-center;
+}
+
+.fish-fail-sub {
+    font-size: 13px;
+    color: rgb(206, 224, 224);
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.92);
+    margin: 0px;
+    padding: 0px;
+    -unity-text-align: middle-center;
+}
+
+/* ============================================================================
+   MINIGAME — BOX-FREE FLOATING 3D COASTAL HUD (GENSHIN × PALIA × SAGARA DNA)
+   Zero opaque SaaS/web boxes! Floats organically over the live 3D ocean,
+   matching DermagaCleanupHud (Minimap rim, Quest diamond, 3D Keycaps).
+   ============================================================================ */
+.fish-mini-assembly {
+    position: absolute;
+    bottom: 24px;
+    align-self: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 46px 14px 46px;
+}
+
+.fish-mini-scrim {
+    position: absolute;
+    left: -34px;
+    right: -34px;
+    top: -14px;
+    bottom: -14px;
+}
+
+.fish-deck-core {
+    align-items: center;
+    justify-content: center;
+}
+
+/* Whisper-Clean Floating Coastal Crest Pill: Rarity + 5 Delicate Pips (Matches [E] Prompt!) */
+.fish-deck-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 15px 4px 12px;
+    border-radius: 16px;
+    background-color: rgba(10, 32, 42, 0.72);
+    border-width: 1.2px;
+    border-color: rgba(255, 245, 214, 0.36);
+    margin-bottom: 16px;
+}
+
+.fish-header-diamond {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    flex-shrink: 0;
+}
+
+.fish-rarity-label {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: rgb(255, 250, 234);
+    text-shadow: 0px 1px 3px rgba(4, 14, 22, 0.96);
+    margin: 0px 12px 0px 0px;
+    padding: 0px;
+}
+
+.fish-step-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.fish-step-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 5px;
+    margin-left: 7px;
+    background-color: rgba(255, 248, 226, 0.28);
+    border-width: 1.2px;
+    border-color: rgba(255, 246, 214, 0.52);
+}
+
+.fish-step-dot-done {
+    background-color: rgb(72, 214, 194);
+    border-color: rgb(214, 255, 246);
+}
+
+.fish-step-dot-active {
+    background-color: rgb(255, 212, 86);
+    border-color: rgb(255, 250, 224);
+}
+
+/* Floating 4 Tactile 3D Keycaps Strung Along a Delicate Fishing-Line Filigree */
+.fish-deck-body {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 108px;
+    margin-bottom: 12px;
+}
+
+.fish-keys-line-bg {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-keys-stage {
+    width: 404px;
+    height: 106px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fish-keys-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-keys-ghost {
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-key-slot {
+    width: 94px;
+    height: 104px;
+    margin: 0px 3px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-key-fx {
+    position: absolute;
+    left: -14px;
+    right: -14px;
+    top: -16px;
+    bottom: -14px;
+}
+
+.fish-key-cap {
+    width: 88px;
+    height: 88px;
+    align-items: center;
+    justify-content: center;
+    background-image: url("UI3D/Keycap3D_Up.png");
+    background-size: contain;
+    background-position: center;
+}
+
+.fish-key-cap-active {
+    background-image: url("UI3D/Keycap3D_Teal_Up.png");
+}
+
+.fish-key-cap-hit {
+    background-image: url("UI3D/Keycap3D_Success_Down.png");
+}
+
+.fish-key-cap-miss {
+    background-image: url("UI3D/Keycap3D_Coral_Down.png");
+}
+
+.fish-key-arrow {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+}
+
+.fish-key-pop {
+    position: absolute;
+    bottom: -4px;
+    font-size: 13px;
+    -unity-text-align: middle-center;
+    text-shadow: 0px 2px 4px rgba(4, 14, 22, 0.96);
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Sleek Floating Glowing Countdown Ribbon Underneath the 4 Keys */
+.fish-timer-track {
+    width: 392px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgba(8, 24, 34, 0.78);
+    border-width: 1.2px;
+    border-color: rgba(255, 246, 214, 0.42);
+    margin-bottom: 11px;
+}
+
+.fish-timer-wave {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: -5px;
+    bottom: -5px;
+}
+
+/* Ultra-Subtle Floating Esc Hint */
+.fish-esc-pill {
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 13px 4px 10px;
+    border-radius: 14px;
+    background-color: rgba(10, 32, 42, 0.70);
+    border-width: 1.2px;
+    border-color: rgba(255, 245, 214, 0.34);
+    transition-property: scale, background-color;
+    transition-duration: 0.12s;
+}
+
+.fish-esc-pill:hover {
+    scale: 1.06 1.06;
+    background-color: rgba(18, 48, 60, 0.80);
+}
+
+.fish-esc-pill:active,
+.fish-esc-pill.sagara-ui-pressed {
+    scale: 0.93 0.93;
+}
+
+.fish-esc-pill-cap {
+    font-size: 11px;
+    color: rgb(255, 232, 160);
+    margin: 0px 6px 0px 0px;
+    padding: 0px;
+}
+
+.fish-esc-pill-label {
+    font-size: 12px;
+    color: rgba(255, 250, 238, 0.88);
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Majestic Bottom-Right Nautical Catch Gauge (Independent Corner Anchor — Matches Minimap!) */
+.fish-gauge-wrap {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+    width: 108px;
+    height: 320px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-gauge-tank {
+    width: 108px;
+    height: 320px;
+}
+
+/* ============================================================================
+   CENTERED CINEMATIC 3D CATCH REWARD REVEAL (OPSI A — COZY 3D STEAM POLISH)
+   ============================================================================ */
+.fish-result-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-result-ambience {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-result-center {
+    width: 580px;
+    max-width: 92%;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px 20px 24px;
+}
+
+/* Top Minimal Golden Kicker */
+.fish-result-kicker-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.fish-result-kicker-line {
+    width: 54px;
+    height: 1.5px;
+    background-color: rgba(252, 218, 128, 0.72);
+    margin: 0px 10px;
+}
+
+.fish-result-diamond {
+    width: 14px;
+    height: 14px;
+    margin: 0px 6px;
+    flex-shrink: 0;
+}
+
+.fish-result-kicker {
+    font-size: 12px;
+    letter-spacing: 2.6px;
+    color: rgb(255, 228, 146);
+    text-shadow: 0px 2px 4px rgba(4, 14, 22, 0.96);
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Hero Live 3D Fish Turntable Floating Openly in Spotlight */
+.fish-result-stage {
+    width: 500px;
+    height: 286px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.fish-result-spotlight {
+    position: absolute;
+    left: -30px;
+    right: -30px;
+    top: -24px;
+    bottom: -24px;
+}
+
+.fish-result-specimen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.fish-result-drag-pill {
+    position: absolute;
+    right: 18px;
+    bottom: 12px;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 14px;
+    background-color: rgba(10, 32, 42, 0.56);
+    border-width: 1px;
+    border-color: rgba(214, 242, 238, 0.30);
+}
+
+.fish-result-drag-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    background-size: contain;
+    background-position: center;
+    -unity-background-image-tint-color: rgb(255, 246, 218);
+}
+
+.fish-result-drag-text {
+    color: rgba(255, 249, 234, 0.88);
+    font-size: 11px;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Crisp Minimal Name & Scientific Subtitle */
+.fish-result-name {
+    font-size: 36px;
+    color: rgb(255, 252, 242);
+    text-shadow: 0px 3px 8px rgba(4, 16, 24, 0.94);
+    -unity-text-align: middle-center;
+    margin: 0px 0px 2px 0px;
+    padding: 0px;
+}
+
+.fish-result-sci {
+    font-size: 14px;
+    -unity-font-style: italic;
+    color: rgba(206, 236, 234, 0.90);
+    text-shadow: 0px 1px 4px rgba(4, 16, 24, 0.92);
+    -unity-text-align: middle-center;
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+/* 2 Clean Frosted Glass Pills */
+.fish-result-tags {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.fish-result-tag {
+    font-size: 13px;
+    padding: 4px 16px;
+    margin: 0px 6px;
+    border-radius: 14px;
+    border-width: 1.2px;
+    text-shadow: 0px 1px 2px rgba(4, 16, 24, 0.82);
+}
+
+.fish-result-tag-habitat {
+    color: rgb(232, 248, 246);
+    background-color: rgba(16, 48, 58, 0.66);
+    border-color: rgba(168, 224, 220, 0.48);
+}
+
+/* Tactile 3D Continue Button (Properly Spaced — Zero Overlap!) */
+.fish-continue-btn {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 6px 22px 13px 24px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.50px;
+    transition-property: scale, translate;
+    transition-duration: 0.13s;
+    transition-timing-function: ease-out;
+}
+
+.fish-continue-btn-legendary {
+    background-image: url("UI3D/Button3D_Gold.png");
+}
+
+.fish-continue-btn:hover {
+    scale: 1.07 1.07;
+    translate: 0px -3px;
+}
+
+.fish-continue-btn:active,
+.fish-continue-btn.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 3px;
+}
+
+.fish-continue-label {
+    font-size: 16px;
+    color: rgb(54, 42, 26);
+    margin: 0px 12px 0px 0px;
+    padding: 0px;
+}
+
+.fish-continue-key {
+    font-size: 11px;
+    color: rgb(255, 252, 244);
+    background-color: rgb(36, 126, 118);
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 82, 78);
+    border-radius: 6px;
+    padding: 2px 9px;
+    margin: 0px;
+}
+
+.fish-continue-btn-legendary .fish-continue-key {
+    background-color: rgb(146, 94, 18);
+    border-bottom-color: rgb(96, 58, 8);
+}

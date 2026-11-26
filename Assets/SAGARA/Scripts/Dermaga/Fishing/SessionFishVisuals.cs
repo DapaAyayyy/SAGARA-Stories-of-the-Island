@@ -151,7 +151,7 @@ namespace Sagara.Dermaga.Fishing
         {
             activeClip = state;
 
-            if (fishAnimator != null)
+            if (fishAnimator != null && fishAnimator.isActiveAndEnabled)
             {
                 fishAnimator.CrossFadeInFixedTime(state, .12f);
             }

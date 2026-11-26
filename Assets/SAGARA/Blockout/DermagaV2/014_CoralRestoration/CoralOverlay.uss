@@ -1,0 +1,1061 @@
+/* ============================================================================
+   SAGARA: Stories of the Island — AAA Cozy Coastal UI Stylesheet (Round 3)
+   - Ultra-Sharp HD SDF Typography (Zero muddy inward outline!)
+   - Genshin × Palia Sleek 3D Keycap + Frosted Fading [E] Interact Bar
+   - Clean "Jurnal" Button (No redundant [J] badge)
+   - Physical 3D Open Field Book with Sticking-Out LEFT-EDGE Bookmarks + 2-Page Spread
+   - Symmetrical, Perfectly Aligned "Restorasi Karang Selesai" Banner
+   ============================================================================ */
+
+/* --- TOP-LEFT GENSHIN-INSPIRED MINIMAP & ULTRA-SHARP HD QUEST TRACKER --- */
+.coast-sidebar {
+    position: absolute;
+    top: 22px;
+    left: 26px;
+    align-items: flex-start;
+    width: 350px;
+    max-width: 44%;
+}
+
+.coast-minimap {
+    width: 152px;
+    height: 156px;
+    margin-left: 2px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.coast-minimap-shadow {
+    position: absolute;
+    width: 146px;
+    height: 146px;
+    top: 9px;
+    left: 3px;
+    border-radius: 73px;
+    background-color: rgba(10, 28, 38, 0.36);
+}
+
+.coast-minimap-face {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    width: 142px;
+    height: 142px;
+    border-radius: 71px;
+    overflow: hidden;
+    background-color: rgb(25, 86, 114);
+}
+
+.coast-minimap-dial {
+    position: absolute;
+    top: 6px;
+    left: 3px;
+    width: 146px;
+    height: 146px;
+    border-radius: 73px;
+}
+
+.coast-minimap-art {
+    position: absolute;
+    background-size: 100% 100%;
+}
+
+.coast-minimap-shade, .coast-minimap-ink {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.coast-minimap-north {
+    position: absolute;
+    top: 0px;
+    font-size: 11px;
+    color: rgb(255, 246, 214);
+    background-color: rgba(18, 46, 58, 0.90);
+    border-width: 1px;
+    border-color: rgba(246, 218, 146, 0.86);
+    border-radius: 9px;
+    padding: 0px 6px;
+    -unity-text-align: middle-center;
+    text-shadow: 0px 1px 2px rgba(8, 22, 30, 0.90);
+}
+
+/* Razor-Sharp HD Quest Tracker (ZERO inward outline eating small text! Feathered scrim behind!) */
+.coast-tracker {
+    width: 336px;
+    padding: 8px 14px 9px 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+.coast-tracker-scrim {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.coast-quest-heading {
+    flex-direction: row;
+    align-items: center;
+}
+
+.coast-quest-diamond {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+.coast-quest-title {
+    color: rgb(255, 248, 216);
+    font-size: 21px;
+    margin: 0px;
+    padding: 0px;
+    white-space: normal;
+    text-shadow: 0px 2px 4px rgba(4, 14, 20, 0.98);
+}
+
+.coast-quest-rule {
+    height: 2px;
+    margin: 5px 18px 6px 30px;
+}
+
+.coast-quest-objective {
+    color: rgb(255, 255, 252);
+    font-size: 17px;
+    margin: 0px 0px 0px 30px;
+    padding: 0px;
+    white-space: normal;
+    text-shadow: 0px 2px 4px rgba(4, 14, 20, 0.98);
+}
+
+.coast-quest-distance {
+    color: rgb(255, 224, 124);
+    font-size: 15px;
+    margin: 3px 0px 0px 30px;
+    padding: 0px;
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.98);
+}
+
+/* --- AUTHENTIC GENSHIN PC [E] INTERACT PROMPT (3D KEYCAP + GAP + ROUNDED CONTEXT-ICON PILL) --- */
+.coast-action {
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+}
+
+.coast-keycap-wrap {
+    width: 44px;
+    height: 44px;
+    margin-right: 4px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../016_SteamPolish/UI3D/Keycap3D_Up.png");
+    background-size: contain;
+    background-position: center;
+}
+
+.coast-action:active .coast-keycap-wrap,
+.coast-action-pressed .coast-keycap-wrap {
+    background-image: url("../016_SteamPolish/UI3D/Keycap3D_Down.png");
+}
+
+.coast-keycap-halo {
+    position: absolute;
+    left: -14px;
+    right: -14px;
+    top: -14px;
+    bottom: -14px;
+}
+
+.coast-keycap {
+    color: rgb(44, 30, 14);
+    font-size: 21px;
+    -unity-text-align: middle-center;
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+
+.coast-action-arrow {
+    width: 12px;
+    height: 18px;
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
+.coast-action-pill {
+    flex-direction: row;
+    align-items: center;
+    min-height: 52px;
+    padding: 6px 96px 6px 14px;
+}
+
+.coast-action-strip-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.coast-action-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+}
+
+.coast-action-label {
+    color: rgb(255, 253, 246);
+    font-size: 22px;
+    letter-spacing: -0.2px;
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.96);
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+/* --- SLEEK TOP ADVISORY TOAST --- */
+.coast-notice {
+    position: absolute;
+    top: 26px;
+    align-self: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 46px 10px 38px;
+}
+
+.coast-notice-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.coast-notice-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+}
+
+.coast-notice-label {
+    color: rgb(255, 250, 234);
+    font-size: 16px;
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.94);
+    margin: 0px;
+    padding: 0px;
+    white-space: normal;
+}
+
+/* --- GENSHIN WORLD / EDGE WAYPOINT BEACON & NPC QUEST EMBLEM --- */
+.coast-npc-quest-marker {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+}
+
+.coast-npc-quest-canvas {
+    width: 36px;
+    height: 36px;
+}
+
+.coast-marker {
+    position: absolute;
+    width: 88px;
+    align-items: center;
+}
+
+.coast-marker-canvas {
+    width: 52px;
+    height: 44px;
+}
+
+.coast-marker-distance {
+    margin-top: -3px;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    color: rgb(255, 246, 214);
+    background-color: rgba(14, 38, 46, 0.88);
+    border-width: 1px;
+    border-color: rgba(246, 214, 132, 0.65);
+    text-shadow: 0px 1px 2px rgba(8, 20, 26, 0.90);
+}
+
+/* --- CLEAN, SYMMETRICAL, PERFECTLY ALIGNED QUEST COMPLETION BANNER --- */
+.coast-completion {
+    position: absolute;
+    top: 28px;
+    align-self: center;
+    width: 620px;
+    max-width: 86%;
+    padding: 26px 56px 20px;
+    align-items: center;
+}
+
+.coast-completion-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.coast-completion-kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgb(255, 224, 132);
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.95);
+    margin: 0px 0px 3px 0px;
+    -unity-text-align: middle-center;
+}
+
+.coast-completion-title {
+    font-size: 27px;
+    -unity-text-align: middle-center;
+    color: rgb(255, 249, 226);
+    text-shadow: 0px 2px 5px rgba(4, 14, 20, 0.96);
+    margin: 0px 0px 4px 0px;
+}
+
+.coast-completion-note {
+    font-size: 15px;
+    -unity-text-align: middle-center;
+    color: rgb(222, 242, 236);
+    text-shadow: 0px 1px 3px rgba(4, 14, 20, 0.94);
+    margin: 0px 0px 12px 0px;
+}
+
+.coast-completion-cta {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 6px 26px 12px 26px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Gold.png");
+    -unity-slice-scale: 0.52px;
+    transition-property: scale, translate;
+    transition-duration: 0.13s;
+}
+
+.coast-completion-cta:hover {
+    scale: 1.06 1.06;
+    translate: 0px -2px;
+}
+
+.coast-completion-cta:active,
+.coast-completion-cta.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 3px;
+}
+
+.coast-cta-label {
+    font-size: 15px;
+    color: rgb(62, 38, 10);
+    -unity-text-align: middle-center;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* --- FLOATING MC RESPONSE --- */
+.coast-response {
+    position: absolute;
+    bottom: 7%;
+    align-self: center;
+    align-items: center;
+    min-width: 220px;
+    padding: 8px 24px;
+    border-radius: 22px;
+    background-color: rgba(14, 38, 46, 0.76);
+}
+
+.coast-response-name { display: none; }
+
+.coast-response-text {
+    color: rgb(255, 250, 234);
+    font-size: 20px;
+    text-shadow: 0px 2px 4px rgb(8, 21, 28);
+}
+
+/* --- CLEAN TOP-RIGHT "JURNAL" BUTTON (NO [J] BADGE!) --- */
+.sagara-journal-shortcut {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    flex-direction: row;
+    align-items: center;
+    min-height: 48px;
+    padding: 7px 22px 13px 18px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.52px;
+    transition-property: scale, translate;
+    transition-duration: 0.13s;
+    transition-timing-function: ease-out;
+}
+
+.sagara-journal-shortcut:hover {
+    scale: 1.06 1.06;
+    translate: 0px -3px;
+}
+
+.sagara-journal-shortcut:active,
+.sagara-journal-shortcut.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 3px;
+}
+
+.sagara-shortcut-icon {
+    width: 23px;
+    height: 23px;
+    margin-right: 9px;
+    background-size: contain;
+    background-position: center;
+}
+
+.sagara-shortcut-text {
+    color: rgb(60, 46, 30);
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-shortcut-locked {
+    opacity: 0.74;
+}
+
+.sagara-shortcut-locked .sagara-shortcut-icon {
+    width: 19px;
+    height: 19px;
+    -unity-background-image-tint-color: rgb(118, 96, 68);
+}
+
+.sagara-shortcut-locked .sagara-shortcut-text {
+    color: rgb(112, 94, 72);
+}
+
+/* --- CONSISTENT NON-AI-SLOP FROSTED COASTAL LOCKED TOAST --- */
+.sagara-locked-toast {
+    position: absolute;
+    top: 26px;
+    align-self: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 54px 10px 44px;
+}
+
+.sagara-locked-toast-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sagara-locked-toast-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+    -unity-background-image-tint-color: rgb(252, 218, 128);
+}
+
+.sagara-locked-toast-text {
+    color: rgb(255, 250, 236);
+    font-size: 16px;
+    text-shadow: 0px 2px 4px rgba(4, 14, 20, 0.96);
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+/* --- CINEMATIC CORAL EXPEDITION OVERLAY --- */
+.sagara-cinema, .sagara-journal, .sagara-journal-modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.sagara-cinema { background-color: rgb(4, 14, 22); }
+.sagara-still-frame { overflow: hidden; }
+.sagara-still {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-position: center;
+}
+
+.sagara-cinema-scrim {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 36%;
+}
+
+.sagara-cinema-dialogue {
+    position: absolute;
+    bottom: 4.5%;
+    left: 14%;
+    right: 14%;
+    align-items: center;
+}
+
+.sagara-cinema-speaker-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.sagara-cinema-speaker-line {
+    width: 44px;
+    height: 1.5px;
+    background-color: rgba(252, 218, 126, 0.72);
+    margin: 0px 10px;
+}
+
+.sagara-cinema-speaker {
+    color: rgb(255, 228, 144);
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-shadow: 0px 2px 4px rgba(4, 14, 22, 0.96);
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-narration {
+    max-width: 96%;
+    color: rgb(255, 252, 244);
+    font-size: 23px;
+    text-shadow: 0px 2px 5px rgba(4, 14, 22, 0.98);
+    white-space: normal;
+    -unity-text-align: middle-center;
+}
+
+.sagara-cinema-continue-arrow {
+    width: 18px;
+    height: 12px;
+    margin-top: 8px;
+}
+
+.sagara-cinema-keys {
+    position: absolute;
+    bottom: 3.2%;
+    right: 3.2%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sagara-cinema-key {
+    flex-direction: row;
+    align-items: center;
+    min-height: 46px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.52px;
+    margin-left: 8px;
+    padding: 7px 18px 13px 14px;
+    transition-property: scale, translate;
+    transition-duration: 0.12s;
+}
+
+.sagara-cinema-key-primary {
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Teal.png");
+}
+
+.sagara-cinema-key:hover {
+    scale: 1.06 1.06;
+    translate: 0px -3px;
+}
+
+.sagara-cinema-key:active,
+.sagara-cinema-key.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 3px;
+}
+
+.sagara-cinema-keycap {
+    min-width: 26px;
+    height: 22px;
+    padding: 0px 6px;
+    margin-right: 7px;
+    border-radius: 6px;
+    background-color: rgb(255, 250, 236);
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(186, 152, 98);
+    align-items: center;
+    justify-content: center;
+}
+
+.sagara-cinema-keycap-text {
+    color: rgb(52, 46, 36);
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-cinema-key-label {
+    color: rgb(56, 46, 32);
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-cinema-key-primary .sagara-cinema-key-label {
+    color: rgb(255, 252, 244);
+}
+
+/* ============================================================================
+   LIVING 3D FIELD JOURNAL — 2-PAGE COLLECTION GRID + LIVE 3D UNDERWATER STAGE
+   ============================================================================ */
+.sagara-desk-ambience {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sagara-book-spread {
+    width: 1140px;
+    max-width: 94%;
+    height: 668px;
+    max-height: 91%;
+    background-image: url("../016_SteamPolish/UI3D/Book3D_Spread.png");
+    background-size: 100% 100%;
+    padding: 46px 76px 58px 76px;
+}
+
+.sagara-book-motion {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+/* Top Bar across the open spread */
+.sagara-book-topbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.sagara-title-group {
+    flex-direction: row;
+    align-items: center;
+}
+
+.sagara-title-icon {
+    width: 34px;
+    height: 34px;
+    margin-right: 12px;
+    background-size: contain;
+    background-position: center;
+}
+
+.sagara-title-stack {
+    justify-content: center;
+}
+
+.sagara-journal-title {
+    font-size: 27px;
+    color: rgb(42, 62, 54);
+    margin: 0px 0px 4px 0px;
+    padding: 0px;
+}
+
+.sagara-progress-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.sagara-progress-track {
+    width: 152px;
+    height: 9px;
+    border-radius: 5px;
+    background-color: rgb(226, 212, 182);
+    border-width: 1px;
+    border-color: rgba(176, 154, 116, 0.55);
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.sagara-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    background-color: rgb(46, 146, 134);
+    transition-property: width;
+    transition-duration: 0.25s;
+}
+
+.sagara-journal-count {
+    font-size: 13px;
+    color: rgb(92, 110, 98);
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-close {
+    flex-direction: row;
+    align-items: center;
+    min-height: 44px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.50px;
+    padding: 6px 18px 12px 18px;
+    transition-property: scale, translate;
+    transition-duration: 0.13s;
+}
+
+.sagara-close:hover {
+    scale: 1.06 1.06;
+    translate: 0px -3px;
+}
+
+.sagara-close:active,
+.sagara-close.sagara-ui-pressed {
+    scale: 0.92 0.92;
+    translate: 0px 3px;
+}
+
+.sagara-close-text {
+    font-size: 15px;
+    color: rgb(62, 50, 36);
+    margin: 0px 7px 0px 0px;
+    padding: 0px;
+}
+
+.sagara-close-icon {
+    width: 13px;
+    height: 13px;
+    background-size: contain;
+    background-position: center;
+    -unity-background-image-tint-color: rgb(174, 86, 66);
+}
+
+/* Two-Page Columns */
+.sagara-spread-columns {
+    flex-direction: row;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+/* === LEFT PAGE: CATEGORY TABS + 5 TACTILE 3D CARDS === */
+.sagara-left-page {
+    width: 50%;
+    padding-right: 40px;
+    min-height: 0;
+}
+
+.sagara-tabs {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.sagara-tab {
+    flex-direction: row;
+    align-items: center;
+    min-height: 44px;
+    margin-right: 12px;
+    padding: 6px 18px 12px 15px;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Warm.png");
+    -unity-slice-scale: 0.50px;
+    transition-property: scale, translate;
+    transition-duration: 0.13s;
+    transition-timing-function: ease-out;
+}
+
+.sagara-tab:hover {
+    scale: 1.05 1.05;
+    translate: 0px -3px;
+}
+
+.sagara-tab:active,
+.sagara-tab.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 2px;
+}
+
+.sagara-tab-active {
+    background-image: url("../016_SteamPolish/UI3D/Button3D_Teal.png");
+}
+
+.sagara-tab-locked {
+    opacity: 0.68;
+}
+
+.sagara-tab-locked:hover {
+    scale: 1.0 1.0;
+    translate: 0px 0px;
+}
+
+.sagara-tab-icon {
+    width: 19px;
+    height: 19px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    background-size: contain;
+    background-position: center;
+    -unity-background-image-tint-color: rgb(74, 62, 46);
+}
+
+.sagara-tab-active .sagara-tab-icon {
+    -unity-background-image-tint-color: rgb(255, 252, 244);
+}
+
+.sagara-tab-label {
+    font-size: 15px;
+    color: rgb(62, 50, 36);
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.sagara-tab-active .sagara-tab-label {
+    color: rgb(255, 252, 244);
+}
+
+.sagara-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.sagara-card {
+    width: 136px;
+    height: 174px;
+    margin: 0px 12px 14px 0px;
+    padding: 10px 10px 16px 10px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0px;
+    background-image: url("../016_SteamPolish/UI3D/Card3D_Idle.png");
+    -unity-slice-scale: 0.52px;
+    transition-property: scale, translate, rotate;
+    transition-duration: 0.15s, 0.15s, 0.15s;
+    transition-timing-function: ease-out;
+}
+
+.sagara-card:hover {
+    scale: 1.07 1.07;
+    translate: 0px -6px;
+    rotate: -1.8deg;
+}
+
+.sagara-card:active,
+.sagara-card.sagara-ui-pressed {
+    scale: 0.93 0.93;
+    translate: 0px 2px;
+    rotate: 0deg;
+}
+
+.sagara-card-selected {
+    background-image: url("../016_SteamPolish/UI3D/Card3D_Selected.png");
+    scale: 1.04 1.04;
+    translate: 0px -3px;
+}
+
+.sagara-card-selected:hover {
+    scale: 1.09 1.09;
+    translate: 0px -7px;
+}
+
+.sagara-card-top {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sagara-card-num {
+    font-size: 12px;
+    color: rgb(138, 122, 96);
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-card-pip {
+    width: 9px;
+    height: 9px;
+    border-radius: 5px;
+}
+
+.sagara-card-pip-unseen {
+    background-color: rgba(150, 142, 126, 0.48);
+}
+
+.sagara-card-thumb {
+    width: 84px;
+    height: 84px;
+    background-size: contain;
+    background-position: center;
+}
+
+.sagara-card-name {
+    font-size: 13px;
+    color: rgb(42, 62, 56);
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-card-name-dim {
+    color: rgb(132, 124, 108);
+}
+
+/* === RIGHT PAGE: SPACIOUS LIVING 3D UNDERWATER STAGE + CRISP NOTES === */
+.sagara-right-page {
+    width: 50%;
+    padding-left: 44px;
+    padding-right: 10px;
+    min-height: 0;
+}
+
+.sagara-detail {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.sagara-detail-wrap {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.sagara-detail-viewport {
+    height: 318px;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 16px;
+    border-width: 1.5px;
+    border-color: rgba(124, 174, 176, 0.50);
+}
+
+.sagara-aquarium-bg, .sagara-plate-frame, .sagara-live-specimen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sagara-drag-pill {
+    position: absolute;
+    bottom: 12px;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 16px;
+    background-color: rgba(14, 42, 50, 0.74);
+    border-width: 1px;
+    border-color: rgba(214, 242, 238, 0.38);
+}
+
+.sagara-drag-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    background-size: contain;
+    background-position: center;
+    -unity-background-image-tint-color: rgb(255, 246, 218);
+}
+
+.sagara-drag-text {
+    color: rgb(255, 249, 234);
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-detail-tags {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sagara-tag-pill {
+    font-size: 12px;
+    padding: 3px 12px;
+    margin-right: 8px;
+    border-radius: 12px;
+    color: rgb(84, 94, 82);
+    background-color: rgb(236, 228, 206);
+    border-width: 1px;
+    border-color: rgb(198, 186, 156);
+}
+
+.sagara-tag-habitat {
+    color: rgb(42, 98, 92);
+    background-color: rgba(64, 152, 140, 0.16);
+    border-color: rgba(64, 152, 140, 0.45);
+}
+
+.sagara-detail-name-row {
+    margin-bottom: 8px;
+}
+
+.sagara-detail-name {
+    font-size: 26px;
+    color: rgb(40, 62, 54);
+    margin: 0px 0px 2px 0px;
+    padding: 0px;
+    white-space: normal;
+}
+
+.sagara-detail-sci {
+    font-size: 13px;
+    -unity-font-style: italic;
+    color: rgb(124, 114, 94);
+    margin: 0px;
+    padding: 0px;
+}
+
+.sagara-record-copy {
+    font-size: 15px;
+    color: rgb(68, 80, 72);
+    white-space: normal;
+    margin: 0px;
+    padding: 0px;
+}

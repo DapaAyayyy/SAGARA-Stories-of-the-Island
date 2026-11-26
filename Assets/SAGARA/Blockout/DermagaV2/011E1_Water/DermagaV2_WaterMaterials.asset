@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DermagaV2_WaterMaterials
+  m_Shader: {fileID: 4800000, guid: b79797deaae7990449a84ac4f1ea777a, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _ShoreMap:
+        m_Texture: {fileID: 2800000, guid: 659ece37c75cf7545b94a1464b9ee23a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _FlowSpeed: 0.95
+    - _NearshoreStrength: 0.62
+    - _PostStrength: 0.16
+    - _RippleStrength: 0.22
+    - _StrokeStrength: 0.34
+    - _SwellContrast: 0.08
+    m_Colors:
+    - _Deep: {r: 0.08, g: 0.45, b: 0.72, a: 1}
+    - _EastPiles: {r: 17.25, g: -5.2, b: 17.25, a: -8.6}
+    - _Shallow: {r: 0.14, g: 0.78, b: 0.74, a: 1}
+    - _WestPiles: {r: 13.15, g: -5.2, b: 13.15, a: -8.6}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!21 &4450324543470403658
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: "Dermaga V2 \xB7 soft traveling wash"
+  m_Shader: {fileID: 4800000, guid: 0a11f3804877c4643852738ad37c5d1c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _FlowSpeed: 1.02
+    - _Opacity: 0.91
+    m_Colors:
+    - _Color: {r: 0.82, g: 0.91, b: 0.81, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

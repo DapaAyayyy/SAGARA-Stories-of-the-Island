@@ -95,6 +95,18 @@ public sealed class PlayerNpcInteraction : MonoBehaviour
     /// <summary>True kalau pilihan nomor <paramref name="index"/> sudah pernah ditanyakan.</summary>
     public bool WasAsked(int index) => askedTopics.Contains(index);
 
+    /// <summary>Mulai percakapan dengan NPC terdekat (dipanggil dari klik tombol interaksi HUD).</summary>
+    public bool TryStartTalkTarget()
+    {
+        if (IsTalking || Target == null)
+        {
+            return false;
+        }
+
+        StartTalk(Target);
+        return true;
+    }
+
     private void Awake()
     {
         movement = GetComponent<PlayerMovement>();
