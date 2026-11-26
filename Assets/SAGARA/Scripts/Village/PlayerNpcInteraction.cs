@@ -28,6 +28,7 @@ public sealed class PlayerNpcInteraction : MonoBehaviour
     private PlayerMovement movement;
     private Animator animator;
     private PlayerInfoBoardInteraction infoBoard;
+    private PlayerTrashInteraction trash;
     private Phase phase;
     private NpcDialogueLine[] activeLines;
     private bool endAfterLines;
@@ -111,6 +112,7 @@ public sealed class PlayerNpcInteraction : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
         infoBoard = GetComponent<PlayerInfoBoardInteraction>();
+        trash = GetComponent<PlayerTrashInteraction>();
     }
 
     private void Update()
@@ -143,9 +145,10 @@ public sealed class PlayerNpcInteraction : MonoBehaviour
             return;
         }
 
-        // Jangan berebut tombol E dengan papan informasi.
+        // Jangan berebut tombol E dengan papan informasi atau sampah yang bisa diambil.
         bool boardBusy = infoBoard != null && (infoBoard.IsReading || infoBoard.Target != null);
-        Target = boardBusy ? null : FindTarget();
+        bool trashBusy = trash != null && trash.isActiveAndEnabled && trash.HasInteractionPriority;
+        Target = boardBusy || trashBusy ? null : FindTarget();
         if (Target != null && keyboard.eKey.wasPressedThisFrame)
         {
             StartTalk(Target);

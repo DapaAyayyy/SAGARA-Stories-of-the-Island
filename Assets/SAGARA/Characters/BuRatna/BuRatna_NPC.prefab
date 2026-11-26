@@ -865,38 +865,29 @@ MonoBehaviour:
   - question: Apa yang terjadi dengan pulau ini?
     answer:
     - expression: 4
-      text: Dulu pantai Lembayung indah dan ikannya melimpah. Sekarang pesisir kotor
-        dan terumbu karangnya rusak.
+      text: Dulu pantai Lembayung indah dan ikannya melimpah. Sekarang pesisir kotor dan terumbu karangnya rusak.
     - expression: 3
-      text: Nelayan jadi sulit melaut, dan banyak anak muda pergi merantau ke kota.
+      text: Sejak badai besar, dermaga hancur. Nelayan sulit melaut, dan banyak anak muda pergi merantau ke kota.
   - question: Apa yang bisa saya bantu?
     answer:
     - expression: 3
-      text: 'Mulailah dari hal kecil. Rawat kebun di dekat rumahmu: cangkul, tanam,
-        siram, lalu panen.'
+      text: Mulailah dari desa ini dulu. Saya akan memberimu tugas satu per satu, membersihkan alun-alun lalu merawat kebun di dekat rumahmu.
     - expression: 0
-      text: Lalu bersihkan sampah di pesisir. Setiap sampah yang kamu kumpulkan membuat
-        laut kita lebih sehat.
-    - expression: 2
-      text: Setiap bantuanmu untuk warga akan dihitung sebagai Community Points untuk
-        membangun desa.
+      text: Setelah itu, bantulah Pak Darma di dermaga. Dia butuh tenaga untuk memulihkan pesisir kita.
   - question: Apa itu Festival Bahari?
     answer:
     - expression: 1
-      text: Festival Bahari adalah pesta laut desa kita! Ada lomba perahu, pasar
-        ikan, dan tarian di pantai.
+      text: Festival Bahari adalah pesta laut desa kita! Ada lomba perahu, pasar ikan, dan tarian di pantai.
     - expression: 4
       text: Sayangnya sudah bertahun-tahun festival itu tidak digelar.
     - expression: 2
-      text: Kalau desa dan lautnya pulih, kita pasti bisa menggelarnya lagi. Saya
-        yakin!
+      text: Kalau desa, pesisir, dan lautnya pulih, kita pasti bisa menggelarnya lagi. Saya yakin!
   - question: Bagaimana dengan dermaga?
     answer:
     - expression: 4
-      text: Dermaga rusak sejak badai besar. Pak Darma, nelayan desa, sering mengeluhkannya.
+      text: Dermaga rusak parah sejak badai. Kayunya patah dan sampah menumpuk di sana.
     - expression: 3
-      text: Dermaga bisa diperbaiki kalau warga sudah mengumpulkan 100 Community
-        Points dan menyelesaikan 3 permintaan warga.
+      text: Pak Darma, nelayan desa, sedang berusaha memperbaikinya. Kamu boleh ke sana kapan saja lewat jalan tenggara, temui dia di depan rumahnya.
   farewellOption: Tidak ada, terima kasih.
   farewellLines:
   - expression: 0

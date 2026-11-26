@@ -13,6 +13,7 @@ public sealed class PlayerInfoBoardInteraction : MonoBehaviour
     private PlayerMovement movement;
     private Animator animator;
     private PlayerNpcInteraction npc;
+    private PlayerTrashInteraction trash;
 
     public InfoBoard Target { get; private set; }
     public InfoBoard OpenBoard { get; private set; }
@@ -24,6 +25,7 @@ public sealed class PlayerInfoBoardInteraction : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         animator = GetComponentInChildren<Animator>();
         npc = GetComponent<PlayerNpcInteraction>();
+        trash = GetComponent<PlayerTrashInteraction>();
     }
 
     private void Update()
@@ -51,7 +53,9 @@ public sealed class PlayerInfoBoardInteraction : MonoBehaviour
             return;
         }
 
-        Target = FindTarget();
+        // Sampah di dekat Player didahulukan, supaya satu tombol E tidak membuka papan sekaligus.
+        bool trashBusy = trash != null && trash.isActiveAndEnabled && trash.HasInteractionPriority;
+        Target = trashBusy ? null : FindTarget();
         if (Target != null && keyboard.eKey.wasPressedThisFrame)
         {
             Open(Target);

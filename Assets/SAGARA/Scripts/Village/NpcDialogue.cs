@@ -32,7 +32,8 @@ public sealed class NpcDialogueTopic
 /// Dipasang di NPC (misalnya Bu Ratna, kepala desa). Menyimpan nama, jabatan, potret per ekspresi,
 /// dan isi dialog. Alurnya: sapaan (pertama kali / kunjungan berikutnya) → NPC bertanya "ada yang ingin
 /// ditanyakan?" → MC memilih pertanyaan → NPC menjawab → kembali ke pilihan → MC pamit → salam penutup.
-/// NPC menoleh ke Player selama diajak bicara.
+/// NPC menoleh ke Player selama diajak bicara. Kalau NPC juga punya <see cref="NpcQuest"/>,
+/// sapaannya diganti sesuai tahap quest (meminta bantuan, mengingatkan, atau berterima kasih).
 /// </summary>
 [DisallowMultipleComponent]
 public sealed class NpcDialogue : MonoBehaviour
@@ -60,6 +61,7 @@ public sealed class NpcDialogue : MonoBehaviour
 
     private Transform lookTarget;
     private Quaternion restRotation;
+    private NpcQuest quest;
 
     public static IEnumerable<NpcDialogue> ActiveNpcs => activeNpcs;
     public string DisplayName => displayName;
@@ -67,11 +69,14 @@ public sealed class NpcDialogue : MonoBehaviour
     public float TalkDistance => talkDistance;
     public int TimesTalked { get; private set; }
 
-    /// <summary>Dialog yang dipakai sekarang: dialog pertama, atau dialog ulang setelah pernah bicara.</summary>
-    public NpcDialogueLine[] CurrentLines =>
+    // Sapaan biasa: dialog pertama, atau dialog ulang setelah pernah bicara.
+    private NpcDialogueLine[] GreetingLines =>
         TimesTalked > 0 && repeatLines != null && repeatLines.Length > 0 ? repeatLines : firstLines;
 
-    public bool HasDialogue => (CurrentLines != null && CurrentLines.Length > 0) || HasTopics;
+    /// <summary>Dialog yang dipakai sekarang. Kalau NPC punya quest, kalimatnya mengikuti tahap quest.</summary>
+    public NpcDialogueLine[] CurrentLines => quest != null ? quest.PilihBaris(GreetingLines) : GreetingLines;
+
+    public bool HasDialogue => (GreetingLines != null && GreetingLines.Length > 0) || HasTopics || quest != null;
     public bool HasTopics => topics != null && topics.Length > 0;
     public NpcDialogueLine ChoicePrompt => choicePrompt;
     public int TopicCount => topics == null ? 0 : topics.Length;
@@ -94,6 +99,7 @@ public sealed class NpcDialogue : MonoBehaviour
     private void Awake()
     {
         restRotation = transform.rotation;
+        quest = GetComponent<NpcQuest>();
     }
 
     private void OnEnable()
@@ -116,6 +122,10 @@ public sealed class NpcDialogue : MonoBehaviour
     {
         lookTarget = null;
         TimesTalked++;
+        if (quest != null)
+        {
+            quest.SetelahBicara();
+        }
     }
 
     private void Update()
