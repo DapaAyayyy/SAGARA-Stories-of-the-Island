@@ -1,0 +1,11 @@
+SAGARA DermagaV2 production wildlife
+
+CDmir and TinyWorlds - Rabbit
+https://opengameart.org/content/rabbit-0
+CC0 1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: FBX conversion, selected native actions, simplified matte URP material, and calibrated ground contact.
+
+Dayvable - Seagull
+https://sketchfab.com/3d-models/seagull-dc42ffc81c86480e9e7f7752fa134174
+CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+Changes: converted the distributed GLB to FBX, extracted the embedded texture, baked the native flight clip, and set Unity scale, orientation, and material.

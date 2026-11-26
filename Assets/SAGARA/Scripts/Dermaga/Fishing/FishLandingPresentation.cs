@@ -103,14 +103,32 @@ namespace Sagara.Dermaga.Fishing
             animator = fish.GetComponentInChildren<Animator>();
             renderers = fish.GetComponentsInChildren<Renderer>();
 
-            ResolveLanding();
             side = Quaternion.Euler(0, 25, 90);
             Stage = "Emerging";
+            ResolveLanding();
         }
 
         bool IsDeck(Collider c)
         {
-            return c != null && c.transform.root.name == "Dock" && c.name.StartsWith("BO_Deck_");
+            if (c == null || c.transform.root.name != "Dock")
+            {
+                return false;
+            }
+
+            if (c.name.StartsWith("BO_Deck_") || c.name.StartsWith("Lantai"))
+            {
+                return true;
+            }
+
+            for (var t = c.transform.parent; t != null; t = t.parent)
+            {
+                if (t.name == "Decks")
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         bool SurfaceAt(Vector3 at, out RaycastHit result)
@@ -289,7 +307,10 @@ namespace Sagara.Dermaga.Fishing
                 if (Stage != "Flopping")
                 {
                     Stage = "Flopping";
-                    animator?.Play("OutOfWater", 0, 0);
+                    if (animator != null && animator.isActiveAndEnabled)
+                    {
+                        animator.Play("OutOfWater", 0, 0);
+                    }
                     session.presentation?.FinishPull(true);
                     session.presentation?.Splash(start, session.Selected.aura, 8);
                     visuals.Celebrate(LandingPoint + Vector3.up * .2f);

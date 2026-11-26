@@ -17,24 +17,24 @@ MonoBehaviour:
     temporaryFishId: prototype_fish_common
     prefab: {fileID: 2350393509496851162, guid: f208407388391cd419d5fa238c33d403, type: 3}
     displayName: Clownfish
-    portrait: {fileID: 2800000, guid: f92b784ffb212e342ad19b901a7196ac, type: 3}
+    portrait: {fileID: 2800000, guid: 67935c54661d9db4e98a7eeebca79672, type: 3}
   - rarity: 1
     temporaryFishId: prototype_fish_uncommon
     prefab: {fileID: 1037449490975160620, guid: 3944f6effcc1f454b807f9324a341be2, type: 3}
     displayName: RedSnapper
-    portrait: {fileID: 2800000, guid: 39d4c788dbfdd4944af5f6fb7514dad6, type: 3}
+    portrait: {fileID: 2800000, guid: 9f0ca84f8fe04fe4da447d2fdc7c7bc5, type: 3}
   - rarity: 2
     temporaryFishId: prototype_fish_rare
     prefab: {fileID: 4364043894094920777, guid: a924c62eb7a696b4ab6402b71940fa59, type: 3}
     displayName: CoralGrouper
-    portrait: {fileID: 2800000, guid: 32316ba4978b36b43a9f18401f1708c7, type: 3}
+    portrait: {fileID: 2800000, guid: 0463f16d4b3164f45bd074ac98336a50, type: 3}
   - rarity: 3
     temporaryFishId: prototype_fish_epic
     prefab: {fileID: 7592696395812623289, guid: 4baecaee35735784b844755e3f0c2bcc, type: 3}
     displayName: RoyalGramma
-    portrait: {fileID: 2800000, guid: fdcfb091a3d17c24db7dc0c5e8658416, type: 3}
+    portrait: {fileID: 2800000, guid: 0bab34ad90700f14291469ffd0f54121, type: 3}
   - rarity: 4
     temporaryFishId: prototype_fish_legendary
     prefab: {fileID: 6312631615599977002, guid: bcccdbe981a8c6646a46b6eb8dc17405, type: 3}
     displayName: Lionfish
-    portrait: {fileID: 2800000, guid: 772c332cd4aaf204485eae8fefccad29, type: 3}
+    portrait: {fileID: 2800000, guid: 253800a488199e9468d9a4f96af3804f, type: 3}
