@@ -13,17 +13,36 @@ public sealed class PlayerTrashInteraction : MonoBehaviour
     public TrashInventory Inventory { get; private set; }
     public string LastMessage { get; private set; } = string.Empty;
     public int LastActionFrame { get; private set; } = -1;
-    public bool HasInteractionPriority => Target != null || LastActionFrame == Time.frameCount;
+    public bool IsPickingUp { get; private set; }
+    public bool HasInteractionPriority =>
+        IsPickingUp || Target != null || LastActionFrame == Time.frameCount;
     public string ActionPrompt => Target == null ? string.Empty : "[E] Ambil " + Target.DisplayName;
+
+    private Animator animator;
+    private TrashPickup pendingPickup;
+    private PlayerWateringInteraction wateringInteraction;
+    private PlayerFarmingInteraction farmingInteraction;
+    private bool InteractionBlocked => SceneTransitionFade.IsTransitioning
+        || (wateringInteraction != null && wateringInteraction.IsBusy)
+        || (farmingInteraction != null && farmingInteraction.IsHarvesting);
 
     private void Awake()
     {
         Inventory = GetComponent<TrashInventory>();
+        animator = GetComponentInChildren<Animator>();
+        wateringInteraction = GetComponent<PlayerWateringInteraction>();
+        farmingInteraction = GetComponent<PlayerFarmingInteraction>();
     }
 
     private void Update()
     {
-        Target = FindTarget();
+        if (InteractionBlocked)
+        {
+            Target = null;
+            return;
+        }
+
+        Target = IsPickingUp ? null : FindTarget();
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
             TryPickupTarget();
@@ -65,21 +84,52 @@ public sealed class PlayerTrashInteraction : MonoBehaviour
 
     public bool TryPickupTarget()
     {
-        // Recheck the current position so teleports and repeated calls use a valid target.
-        Target = FindTarget();
-        if (Target == null || !Target.TryCollect(Inventory))
-        {
+        if (IsPickingUp || animator == null || Inventory == null || InteractionBlocked)
             return false;
-        }
 
-        LastMessage = Target.DisplayName + " dikumpulkan.";
-        LastActionFrame = Time.frameCount;
+        Target = FindTarget();
+        if (Target == null)
+            return false;
+
+        pendingPickup = Target;
         Target = null;
+
+        IsPickingUp = true;
+        LastActionFrame = Time.frameCount;
+
+        animator.SetBool("isWalking", false);
+        animator.SetTrigger("Pickup");
+
         return true;
+    }
+
+    public void CollectPendingTrash()
+    {
+        if (!IsPickingUp || pendingPickup == null)
+            return;
+
+        TrashPickup pickup = pendingPickup;
+        pendingPickup = null;
+
+        string displayName = pickup.DisplayName;
+
+        if (pickup.TryCollect(Inventory))
+        {
+            LastMessage = displayName + " dikumpulkan.";
+            LastActionFrame = Time.frameCount;
+        }
+    }
+
+    public void ReleasePickupMovement()
+    {
+        IsPickingUp = false;
+        pendingPickup = null;
     }
 
     private void OnDisable()
     {
         Target = null;
+        IsPickingUp = false;
+        pendingPickup = null;
     }
 }

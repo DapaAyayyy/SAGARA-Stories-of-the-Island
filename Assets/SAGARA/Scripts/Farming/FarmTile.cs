@@ -9,7 +9,6 @@ public sealed class FarmTile : MonoBehaviour
     [SerializeField] private CropGrowth cropPrefab;
     [SerializeField] private Color wateredTint = new Color(0.55f, 0.55f, 0.6f, 1f);
 
-    public bool IsTilled { get; private set; }
     public MeshRenderer SoilRenderer { get; private set; }
     public CropGrowth Crop { get; private set; }
     public bool IsWatered => Crop != null && Crop.IsWatered;
@@ -25,21 +24,9 @@ public sealed class FarmTile : MonoBehaviour
         RefreshSoil();
     }
 
-    public bool TryTill()
-    {
-        if (IsTilled)
-        {
-            return false;
-        }
-
-        IsTilled = true;
-        RefreshSoil();
-        return true;
-    }
-
     public bool TryPlant(CropDefinition definition)
     {
-        if (!IsTilled || Crop != null || cropPrefab == null
+        if (Crop != null || cropPrefab == null
             || definition == null || !definition.IsValid)
         {
             return false;
@@ -83,7 +70,7 @@ public sealed class FarmTile : MonoBehaviour
 
     private void RefreshSoil()
     {
-        SoilRenderer.enabled = IsTilled;
+        SoilRenderer.enabled = true;
         Color color = IsWatered ? dryColor * wateredTint : dryColor;
         color.a = dryColor.a;
         SoilRenderer.GetPropertyBlock(soilProperties);

@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.5f;
     [SerializeField] private float turnSpeed = 540f;
     [SerializeField] private float gravity = -20f;
-
+    private PlayerTrashInteraction trashInteraction;
+    private PlayerWateringInteraction wateringInteraction;
+    private PlayerFarmingInteraction farmingInteraction;
     private CharacterController controller;
     private Animator animator;
     private float verticalSpeed;
@@ -18,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        trashInteraction = GetComponent<PlayerTrashInteraction>();
+        wateringInteraction = GetComponent<PlayerWateringInteraction>();
+        farmingInteraction = GetComponent<PlayerFarmingInteraction>();
     }
 
     private void Update()
@@ -25,7 +30,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = Vector3.zero;
         Keyboard keyboard = Keyboard.current;
 
-        if (keyboard != null)
+        if (keyboard != null && !SceneTransitionFade.IsTransitioning
+            && (trashInteraction == null || !trashInteraction.IsPickingUp)
+            && (wateringInteraction == null || !wateringInteraction.IsBusy)
+            && (farmingInteraction == null || !farmingInteraction.IsHarvesting))
         {
             if (keyboard.wKey.isPressed) direction += Vector3.forward;
             if (keyboard.sKey.isPressed) direction += Vector3.back;
