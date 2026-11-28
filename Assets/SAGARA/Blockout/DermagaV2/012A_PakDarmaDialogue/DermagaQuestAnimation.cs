@@ -62,7 +62,7 @@ namespace Sagara.DermagaV2
             {
                 if (target)
                 {
-                    collector.TryPickupTarget();
+                    target.TryCollect(collector.Inventory);
                 }
             });
         }

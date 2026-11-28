@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="../../Blockout/DermagaV2/014_CoralRestoration/CoralOverlay.uss" />
+    <ui:VisualElement class="coast-sidebar" style="max-width: 88%;" picking-mode="Ignore">
+        <ui:VisualElement name="FarmingQuestTracker" class="coast-tracker" style="display: none; max-width: 100%;" picking-mode="Ignore">
+            <ui:VisualElement name="FarmingQuestScrim" class="coast-tracker-scrim" picking-mode="Ignore" />
+            <ui:VisualElement class="coast-quest-heading" picking-mode="Ignore">
+                <ui:VisualElement class="coast-quest-diamond" style="align-items: center; justify-content: center;" picking-mode="Ignore">
+                    <ui:VisualElement style="width: 11px; height: 11px; align-items: center; justify-content: center; rotate: 45deg; background-color: rgb(250, 199, 71); border-width: 1px; border-color: rgb(106, 66, 23);" picking-mode="Ignore">
+                        <ui:VisualElement style="width: 5px; height: 5px; background-color: rgb(255, 250, 224);" picking-mode="Ignore" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label name="FarmingQuestTitle" class="coast-quest-title" style="flex-shrink: 1; min-width: 0;" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="FarmingQuestRule" class="coast-quest-rule" picking-mode="Ignore" />
+            <ui:Label name="FarmingQuestObjective" class="coast-quest-objective" picking-mode="Ignore" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
