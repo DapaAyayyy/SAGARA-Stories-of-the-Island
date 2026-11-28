@@ -28513,6 +28513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 751388254}
+  - component: {fileID: 751388255}
   m_Layer: 0
   m_Name: Spawn_FromKebun
   m_TagString: Untagged
@@ -28528,13 +28529,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751388253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -70, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 869502753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &751388255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751388253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044601fadf49a294f87dbf16b8f60472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSpawnPoint
+  spawnId: FromKebun
+  player: {fileID: 441917527}
 --- !u!1001 &755236530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35533,6 +35548,8 @@ GameObject:
   m_Component:
   - component: {fileID: 958771177}
   - component: {fileID: 958771178}
+  - component: {fileID: 958771180}
+  - component: {fileID: 958771179}
   m_Layer: 0
   m_Name: Trigger_ToKebun
   m_TagString: Untagged
@@ -35576,6 +35593,49 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.5, y: 3, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &958771179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958771176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995b89b0e028b264cbfe6f74a6ac8193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionTrigger
+  destinationScene: Assets/SAGARA/Scenes/RumahDanKebun.unity
+  destinationSpawnId: FromMainVillage
+  transitionPanel: {fileID: 11400000, guid: 4e6e6cfa47943494bbdd9f3a03cc96b0, type: 2}
+  fadeDuration: 0.3
+--- !u!54 &958771180
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958771176}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &967694258
 GameObject:
   m_ObjectHideFlags: 0

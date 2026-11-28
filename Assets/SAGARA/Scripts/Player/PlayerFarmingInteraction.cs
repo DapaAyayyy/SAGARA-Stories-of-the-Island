@@ -5,28 +5,42 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(FarmInventory), typeof(FarmTileHighlighter))]
 public sealed class PlayerFarmingInteraction : MonoBehaviour
 {
+    private static readonly int PickupTrigger = Animator.StringToHash("Pickup");
+    private static readonly int PickupState = Animator.StringToHash("Base Layer.Pickup");
+    private static readonly int IsWalkingParameter = Animator.StringToHash("isWalking");
+    private const float HarvestTimeout = 2.5f;
+
     [SerializeField, Min(0.1f)] private float interactionDistance = 0.9f;
 
     public FarmTile TargetTile { get; private set; }
     public FarmInventory Inventory { get; private set; }
     public string LastMessage { get; private set; } = string.Empty;
     public int LastActionFrame { get; private set; } = -1;
+    public bool IsHarvesting { get; private set; }
 
     private FarmTileHighlighter highlighter;
     private PlayerTrashInteraction trashInteraction;
+    private PlayerWateringInteraction wateringInteraction;
+    private Animator animator;
+    private PlayerPickupAnimationEvents pickupEvents;
+    private FarmTile pendingHarvest;
+    private float harvestDeadline;
+    private bool UsesWateringCan => wateringInteraction != null && wateringInteraction.isActiveAndEnabled;
+    private bool InteractionBlocked => IsHarvesting || SceneTransitionFade.IsTransitioning
+        || (UsesWateringCan && wateringInteraction.IsBusy)
+        || (trashInteraction != null && trashInteraction.isActiveAndEnabled
+            && trashInteraction.HasInteractionPriority);
 
     public string ActionPrompt
     {
         get
         {
+            if (InteractionBlocked) return string.Empty;
+            if (UsesWateringCan && wateringInteraction.CanPickUp) return "[E] Ambil gembor";
+
             if (TargetTile == null)
             {
                 return "Dekati dan hadapkan karakter ke petak.";
-            }
-
-            if (!TargetTile.IsTilled)
-            {
-                return "[E] Cangkul tanah";
             }
 
             if (Inventory == null || Inventory.Crop == null)
@@ -47,9 +61,13 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
                 return "[E] Panen " + crop.Definition.DisplayName;
             }
 
-            return crop.IsWatered
-                ? "Sedang tumbuh · " + Mathf.CeilToInt(crop.SecondsRemaining) + " dtk"
-                : "[E] Siram " + crop.Definition.DisplayName;
+            if (crop.IsWatered)
+            {
+                return "Sedang tumbuh · " + Mathf.CeilToInt(crop.SecondsRemaining) + " dtk";
+            }
+
+            return UsesWateringCan && !wateringInteraction.HasWateringCan
+                ? "Ambil gembor di dekat sumur." : "[E] Siram " + crop.Definition.DisplayName;
         }
     }
 
@@ -58,24 +76,38 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
         Inventory = GetComponent<FarmInventory>();
         highlighter = GetComponent<FarmTileHighlighter>();
         trashInteraction = GetComponent<PlayerTrashInteraction>();
+        wateringInteraction = GetComponent<PlayerWateringInteraction>();
+        animator = GetComponentInChildren<Animator>();
+        if (animator != null) pickupEvents = animator.GetComponent<PlayerPickupAnimationEvents>();
+    }
+
+    private void OnEnable()
+    {
+        if (wateringInteraction != null) wateringInteraction.Feedback += ReportAction;
     }
 
     private void LateUpdate()
     {
-        if (trashInteraction != null && trashInteraction.isActiveAndEnabled
-            && trashInteraction.HasInteractionPriority)
+        if (IsHarvesting && Time.time >= harvestDeadline) FinishHarvest();
+
+        if (InteractionBlocked)
         {
             TargetTile = null;
             highlighter.Show(null);
             return;
         }
 
-        Vector3 probeOrigin = transform.position
-            + transform.forward * interactionDistance + Vector3.up;
-        TargetTile = Physics.Raycast(probeOrigin, Vector3.down, out RaycastHit hit,
-            2f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)
-            ? hit.collider.GetComponent<FarmTile>()
-            : null;
+        TargetTile = null;
+        if (!UsesWateringCan || !wateringInteraction.CanPickUp)
+        {
+            Vector3 probeOrigin = transform.position
+                + transform.forward * interactionDistance + Vector3.up;
+            if (Physics.Raycast(probeOrigin, Vector3.down, out RaycastHit hit,
+                2f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+            {
+                TargetTile = hit.collider.GetComponent<FarmTile>();
+            }
+        }
 
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -87,17 +119,21 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
 
     public bool TryInteractTarget()
     {
+        if (InteractionBlocked) return false;
+
+        if (UsesWateringCan && wateringInteraction.CanPickUp)
+        {
+            bool started = wateringInteraction.TryPickUp();
+            ReportAction(started ? "Mengambil gembor..." : "Gembor belum bisa diambil.");
+            return started;
+        }
+
         if (TargetTile == null)
         {
             return false;
         }
 
         LastActionFrame = Time.frameCount;
-
-        if (!TargetTile.IsTilled)
-        {
-            return TryTillTarget();
-        }
 
         if (Inventory == null || Inventory.Crop == null)
         {
@@ -112,14 +148,26 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
 
         if (TargetTile.Crop.IsMature)
         {
-            if (!TargetTile.TryHarvest(out CropDefinition definition, out int amount))
+            return BeginHarvest(TargetTile);
+        }
+
+        if (TargetTile.IsWatered)
+        {
+            LastMessage = "Tanaman sedang tumbuh.";
+            return false;
+        }
+
+        if (UsesWateringCan)
+        {
+            if (!wateringInteraction.HasWateringCan)
             {
+                LastMessage = "Ambil gembor di dekat sumur.";
                 return false;
             }
 
-            Inventory.AddHarvest(definition, amount);
-            LastMessage = "+" + amount + " " + definition.DisplayName + " masuk hasil panen.";
-            return true;
+            bool started = wateringInteraction.TryWater(TargetTile);
+            LastMessage = started ? "Menyiram tanaman..." : "Tanaman belum bisa disiram.";
+            return started;
         }
 
         if (TargetTile.TryWater())
@@ -132,15 +180,49 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
         return false;
     }
 
-    public bool TryTillTarget()
+    private bool BeginHarvest(FarmTile tile)
     {
-        if (TargetTile == null || !TargetTile.TryTill())
+        if (pickupEvents == null || !pickupEvents.isActiveAndEnabled || !animator.isInitialized
+            || !animator.HasState(0, PickupState))
         {
-            return false;
+            return Harvest(tile);
         }
 
-        LastMessage = "Tanah siap ditanami.";
-        LastActionFrame = Time.frameCount;
+        pendingHarvest = tile;
+        IsHarvesting = true;
+        harvestDeadline = Time.time + HarvestTimeout;
+        animator.SetBool(IsWalkingParameter, false);
+        animator.SetTrigger(PickupTrigger);
+        ReportAction("Memanen " + tile.Crop.Definition.DisplayName + "...");
+        return true;
+    }
+
+    public void CollectPendingHarvest()
+    {
+        if (!IsHarvesting || pendingHarvest == null) return;
+
+        FarmTile tile = pendingHarvest;
+        pendingHarvest = null;
+        if (!Harvest(tile)) ReportAction("Tanaman belum bisa dipanen.");
+    }
+
+    public void FinishHarvest()
+    {
+        if (!IsHarvesting) return;
+
+        if (pendingHarvest != null) ReportAction("Panen terhenti. Tekan E untuk mencoba lagi.");
+        pendingHarvest = null;
+        IsHarvesting = false;
+        if (animator != null && animator.isInitialized) animator.ResetTrigger(PickupTrigger);
+    }
+
+    private bool Harvest(FarmTile tile)
+    {
+        if (!tile.TryHarvest(out CropDefinition definition, out int amount)) return false;
+
+        Inventory.AddHarvest(definition, amount);
+        QuestLog.Laporkan(QuestLog.JenisPanen, amount);
+        ReportAction("+" + amount + " " + definition.DisplayName + " masuk hasil panen.");
         return true;
     }
 
@@ -166,17 +248,27 @@ public sealed class PlayerFarmingInteraction : MonoBehaviour
             }
         }
 
-        LastMessage = planted ? definition.DisplayName + " ditanam. Siram untuk mulai tumbuh."
-            : "Tanaman belum bisa ditanam di petak ini.";
+        LastMessage = !planted ? "Tanaman belum bisa ditanam di petak ini."
+            : UsesWateringCan && !wateringInteraction.HasWateringCan
+                ? definition.DisplayName + " ditanam. Ambil gembor di dekat sumur."
+                : definition.DisplayName + " ditanam. Siram untuk mulai tumbuh.";
         return planted;
     }
 
     private void OnDisable()
     {
+        FinishHarvest();
+        if (wateringInteraction != null) wateringInteraction.Feedback -= ReportAction;
         TargetTile = null;
         if (highlighter != null)
         {
             highlighter.Show(null);
         }
+    }
+
+    private void ReportAction(string message)
+    {
+        LastActionFrame = Time.frameCount;
+        LastMessage = message;
     }
 }

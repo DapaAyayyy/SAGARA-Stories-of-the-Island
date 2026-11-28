@@ -8,7 +8,7 @@ public sealed class TrashPickup : MonoBehaviour
 
     [SerializeField] private string displayName = "Sampah";
     [SerializeField, Min(1)] private int amount = 1;
-
+    [SerializeField] private bool countsForVillageQuest;
     public static IEnumerable<TrashPickup> ActivePickups => activePickups;
     public string DisplayName => displayName;
     public bool IsCollected { get; private set; }
@@ -27,7 +27,7 @@ public sealed class TrashPickup : MonoBehaviour
     }
 
     public bool TryCollect(TrashInventory inventory)
-    {
+    { 
         if (inventory == null || IsCollected || !isActiveAndEnabled)
         {
             return false;
@@ -35,6 +35,10 @@ public sealed class TrashPickup : MonoBehaviour
 
         IsCollected = true;
         inventory.Add(Mathf.Max(1, amount));
+        if (countsForVillageQuest)
+        {
+            QuestLog.Laporkan(QuestLog.JenisSampah, 1);
+        } 
         gameObject.SetActive(false);
         Destroy(gameObject);
         return true;
